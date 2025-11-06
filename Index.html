@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 Años Juntos 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #0A1F44 0%, #1B3A5F 100%);
+        }
+
+        /* ===== PÁGINA 1: BOTONES ===== */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-1 {
+            background: linear-gradient(135deg, #0A1F44 0%, #1B3A5F 50%, #0A1F44 100%);
+        }
+
+        .hearts-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: #D81B60;
+            font-size: 20px;
+            opacity: 0.3;
+            animation: floatHeart 15s infinite;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #FFF8F0;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(216, 27, 96, 0.5);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: #87CEEB;
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #D81B60 0%, #E91E63 100%);
+            color: white;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(216, 27, 96, 0.5);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #7CB69F 0%, #8FBC8F 100%);
+            color: white;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* ===== PÁGINA 2: CARTA ESTILO SOBRE MEJORADO ===== */
+        .page-2 {
+            background: linear-gradient(135deg, #1B3A5F 0%, #0A1F44 100%);
+            display: none;
+        }
+
+        .envelope-wrapper {
+            perspective: 1200px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .envelope-container {
+            width: 90vw;
+            max-width: 650px;
+            height: 450px;
+            position: relative;
+            animation: envelopeFloat 1s ease-out;
+            transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .envelope-container.hide {
+            opacity: 0;
+            transform: translateY(-100px) scale(0.8);
+            pointer-events: none;
+        }
+
+        @keyframes envelopeFloat {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sobre base */
+        .envelope-base {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FFD1C1 0%, #FFC4B0 100%);
+            border-radius: 12px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Solapa triangular del sobre */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: top center;
+            transition: transform 1s ease;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .envelope-flap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 325px solid transparent;
+            border-right: 325px solid transparent;
+            border-top: 225px solid #E91E63;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+
+        .envelope-flap.open {
+            transform: rotateX(-180deg);
+        }
+
+        /* Texto en la solapa */
+        .flap-text {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: 600;
+            font-size: 1.3rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            pointer-events: none;
+            z-index: 11;
+            text-align: center;
+            width: 100%;
+        }
+
+        .envelope-flap.open .flap-text {
+            opacity: 0;
+        }
+
+        /* Corazón en el sobre */
+        .envelope-heart {
+            position: absolute;
+            bottom: 45%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            font-size: 2.5rem;
+            z-index: 5;
+            filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.3));
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        .envelope-container.hide .envelope-heart {
+            opacity: 0;
+            transform: translate(-50%, 50%) scale(0.5);
+        }
+
+        /* ===== CARTA REDISEÑADA DESDE CERO ===== */
+        .letter-paper {
+            position: absolute;
+            width: 88%;
+            max-width: 580px;
+            height: 85%;
+            max-height: 550px;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FFF8F0;
+            border-radius: 15px;
+            padding: 0;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 8;
+            box-sizing: border-box;
+            border: 2px solid rgba(216, 27, 96, 0.15);
+        }
+
+        .letter-paper.show {
+            position: fixed;
+            opacity: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: all;
+            width: 90vw;
+            max-width: 600px;
+            height: auto;
+            max-height: 85vh;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            animation: letterReveal 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both;
+        }
+
+        @keyframes letterReveal {
+            0% {
+                transform: translate(-50%, -50%) scale(0.85);
+                opacity: 0;
+                filter: blur(10px);
+            }
+            60% {
+                transform: translate(-50%, -50%) scale(1.02);
+                filter: blur(0px);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
+
+        /* Contenedor interno de la carta */
+        .letter-content {
+            padding: 45px 40px;
+            overflow-y: auto;
+            max-height: 85vh;
+            box-sizing: border-box;
+            position: relative;
+            background: linear-gradient(to bottom, 
+                rgba(255, 248, 240, 1) 0%,
+                rgba(255, 248, 240, 0.98) 100%);
+        }
+
+        /* Scrollbar personalizado */
+        .letter-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .letter-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .letter-content::-webkit-scrollbar-thumb {
+            background: rgba(216, 27, 96, 0.25);
+            border-radius: 10px;
+        }
+
+        .letter-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(216, 27, 96, 0.4);
+        }
+
+        /* Patrón decorativo sutil */
+        .letter-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(216, 27, 96, 0.2) 50%,
+                transparent 100%);
+        }
+
+        /* Header de la carta */
+        .letter-header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            position: relative;
+        }
+
+        .letter-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                #D81B60 50%,
+                transparent 100%);
+        }
+
+        .letter-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #D81B60;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(216, 27, 96, 0.1);
+        }
+
+        .letter-header p {
+            font-size: 1rem;
+            color: #87CEEB;
+            font-style: italic;
+            font-weight: 400;
+            margin-top: 8px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Cuerpo de la carta */
+        .letter-body {
+            font-size: 1.05rem;
+            color: #1E1E1E;
+            line-height: 1.75;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+            font-weight: 400;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .letter-body p {
+            margin-bottom: 20px;
+            text-indent: 0;
+            padding: 0;
+            text-align: justify;
+        }
+
+        .letter-body p:first-of-type {
+            margin-top: 0;
+        }
+
+        .letter-body p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* Firma de la carta */
+        .letter-signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #D81B60;
+            text-align: right;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-style: italic;
+            width: 100%;
+            box-sizing: border-box;
+            font-weight: 600;
+            padding-top: 25px;
+            position: relative;
+        }
+
+        .letter-signature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(216, 27, 96, 0.2) 100%);
+        }
+
+        /* Botón continuar */
+        .continue-btn {
+            margin-top: 35px;
+            background: linear-gradient(135deg, #D81B60 0%, #E91E63 100%);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.15rem;
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(216, 27, 96, 0.3);
+            font-family: 'Montserrat', sans-serif;
+            border: none;
+            cursor: pointer;
+        }
+
+        .continue-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(216, 27, 96, 0.4);
+        }
+
+        .continue-btn:active {
+            transform: translateY(-1px) scale(1);
+        }
+
+        .click-instruction {
+            text-align: center !important;
+            color: #87CEEB;
+            font-size: 1.3rem;
+            animation: pulse 2s infinite;
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            align-self: center;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .click-instruction.hide {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+        }
+
+        /* ===== PÁGINA 3: TIMELINE ===== */
+        .page-3 {
+            background: #FFF8F0;
+            display: none;
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .timeline-header h1 {
+            color: #0A1F44;
+            font-size: 2.8rem;
+            text-shadow: none;
+            margin-bottom: 15px;
+        }
+
+        .timeline-header p {
+            color: #1B3A5F;
+            font-size: 1.2rem;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #D81B60 0%, #87CEEB 50%, #7CB69F 100%);
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            position: relative;
+            opacity: 0;
+            animation: slideInTimeline 1s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+        .timeline-item:nth-child(5) { animation-delay: 1s; }
+        .timeline-item:nth-child(6) { animation-delay: 1.2s; }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+            /* Sombra a la derecha */
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+            /* Sombra a la izquierda */
+            box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 25px;
+            background: #D81B60;
+            border: 4px solid #FFF8F0;
+            border-radius: 50%;
+            top: 25px;
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        .timeline-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #D81B60;
+            margin-bottom: 12px;
+        }
+
+        .timeline-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            color: #0A1F44;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .timeline-description {
+            color: #1E1E1E;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .timeline-photo {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #87CEEB 0%, #7CB69F 100%);
+            border-radius: 10px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 15px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .timeline-photo img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 7px;
+            display: block;
+        }
+
+        /* Estilo para contenedores con múltiples fotos */
+        .timeline-photo-multiple {
+            gap: 10px;
+            flex-wrap: nowrap;
+        }
+
+        .timeline-photo-multiple img {
+            width: calc(50% - 5px);
+            max-width: calc(50% - 5px);
+            height: 100%;
+            object-fit: contain;
+        }
+
+
+        /* Mejora para mantener la sombra direccional en hover */
+        .timeline-item:nth-child(odd) .timeline-content:hover {
+            transform: translateY(-8px); /* Pequeño levantamiento */
+            box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:hover {
+            transform: translateY(-8px); /* Pequeño levantamiento */
+            box-shadow: -15px 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        /* SECCIÓN ESPECIAL DEL COMPROMISO - COLORES AZULES */
+        .special-place-section {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .special-place {
+            background: linear-gradient(135deg, #0A1F44 0%, #1B3A5F 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(10, 31, 68, 0.4);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #87CEEB;
+        }
+
+        .special-place::before {
+            content: '💍';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 100px;
+            opacity: 0.15;
+        }
+
+        .special-place::after {
+            content: '💍';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 100px;
+            opacity: 0.15;
+        }
+
+        .special-place h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+            color: #87CEEB;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .special-place-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .location-link {
+            color: #87CEEB;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .location-link:hover {
+            color: #FFF8F0;
+            border-bottom: 2px solid #FFF8F0;
+            text-shadow: 0 0 10px rgba(255, 248, 240, 0.5);
+        }
+
+        .special-place-photo {
+            display: none;
+        }
+
+        /* ===== NUEVO: CARRUSEL DE PERSPECTIVA 3D ===== */
+        .carousel-container {
+            width: 100%;
+            max-width: 350px;
+            height: 500px;
+            margin: 40px auto 0;
+            perspective: 1000px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-wrapper {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(175px); }
+        .carousel-item:nth-child(2) { transform: rotateY(90deg) translateZ(175px); }
+        .carousel-item:nth-child(3) { transform: rotateY(180deg) translateZ(175px); }
+        .carousel-item:nth-child(4) { transform: rotateY(270deg) translateZ(175px); }
+
+        .carousel-item .product-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            border-radius: 20px;
+            background: rgba(10, 31, 68, 0.3);
+        }
+
+        .product-title {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: #ffffff;
+            font-weight: 700;
+            z-index: 1000;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            width: 90%;
+        }
+
+        .final-btn {
+            margin: 60px auto;
+            display: block;
+            background: linear-gradient(135deg, #D81B60 0%, #E91E63 100%);
+            color: white;
+            font-size: 1.4rem;
+            padding: 20px 50px;
+            font-weight: 700;
+        }
+
+        .final-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(216, 27, 96, 0.5);
+        }
+
+        /* ===== PÁGINA 4: CELEBRACIÓN FINAL ===== */
+        .page-4 {
+            background: linear-gradient(135deg, #0A1F44 0%, #1B3A5F 50%, #87CEEB 100%);
+            display: none;
+        }
+
+        .celebration-content {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            max-width: 900px;
+            background: rgba(255, 248, 240, 0.95);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+        }
+
+        .celebration-content h1 {
+            font-size: 3.5rem;
+            color: #D81B60;
+            margin-bottom: 30px;
+            animation: bounceIn 1s ease-out;
+            text-shadow: 2px 2px 10px rgba(216, 27, 96, 0.3);
+        }
+
+        .celebration-emoji {
+            font-size: 4rem;
+            margin: 20px 0;
+            animation: rotateEmoji 2s infinite;
+        }
+
+        @keyframes rotateEmoji {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        .celebration-text {
+            font-size: 1.5rem;
+            color: #0A1F44;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 2;
+            animation: fadeIn 2s ease-out 0.5s both;
+        }
+
+        .celebration-text strong {
+            font-size: 2.2rem;
+            color: #D81B60;
+            display: block;
+            margin-top: 30px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall 3s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Control de Música */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+        }
+
+        .music-control.playing {
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInTimeline {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.2);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 1.1rem; }
+            .btn { padding: 15px 40px; font-size: 1.2rem; }
+            
+            .envelope-container {
+                max-width: 90vw;
+                height: 380px;
+            }
+
+            .envelope-flap::before {
+                border-left: 45vw solid transparent;
+                border-right: 45vw solid transparent;
+                border-top: 190px solid #E91E63;
+            }
+            
+            .letter-paper {
+                width: 85%;
+                max-width: 85%;
+            }
+
+            .letter-paper.show {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 92vw;
+                max-width: 92vw;
+                max-height: 90vh;
+                border-radius: 12px;
+            }
+
+            .letter-content {
+                padding: 35px 25px;
+                max-height: 90vh;
+            }
+            
+            .letter-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .letter-header p {
+                font-size: 0.9rem;
+            }
+
+            .letter-header::after {
+                width: 60px;
+            }
+            
+            .letter-body {
+                font-size: 0.95rem;
+                line-height: 1.8;
+            }
+
+            .letter-body p {
+                margin-bottom: 18px;
+                text-align: left;
+            }
+
+            .letter-signature {
+                font-size: 1.3rem;
+                margin-top: 30px;
+                padding-top: 20px;
+            }
+
+            .letter-signature::before {
+                width: 80px;
+            }
+
+            .continue-btn {
+                font-size: 1rem;
+                padding: 16px 35px;
+                margin-top: 30px;
+            }
+
+            .flap-text {
+                font-size: 1.1rem;
+                top: 60%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+
+            .continue-btn {
+                font-size: 1.1rem;
+                padding: 15px 35px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                margin-left: 50px !important;
+                margin-right: 0 !important;
+                max-width: calc(100% - 60px);
+            }
+            
+            .timeline-dot {
+                left: 20px;
+                transform: translateX(0);
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 50px !important;
+            }
+            
+            .special-place {
+                padding: 35px 25px;
+            }
+            
+            .special-place h2 {
+                font-size: 2rem;
+            }
+            
+            .special-place-text {
+                font-size: 1.1rem;
+            }
+            
+            .special-place-photo {
+                height: 280px;
+            }
+
+            .carousel-container {
+                max-width: 300px;
+                height: 400px;
+            }
+
+            .carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(150px); }
+            .carousel-item:nth-child(2) { transform: rotateY(90deg) translateZ(150px); }
+            .carousel-item:nth-child(3) { transform: rotateY(180deg) translateZ(150px); }
+            .carousel-item:nth-child(4) { transform: rotateY(270deg) translateZ(150px); }
+
+            .product-title {
+                font-size: 1.8em;
+            }
+
+            .final-btn {
+                font-size: 1.2rem;
+                padding: 18px 40px;
+            }
+            
+            .celebration-content {
+                padding: 40px 25px;
+            }
+            
+            .celebration-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .celebration-text {
+                font-size: 1.2rem;
+            }
+            
+            .celebration-text strong {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PÁGINA 1: ENTRADA CON BOTONES -->
+    <div class="page page-1" id="page1">
+        <div class="hearts-background" id="hearts-bg"></div>
+        <h1>✨ ¿Quieres ver algo especial? ✨</h1>
+        <p class="subtitle">Tengo una sorpresita por nuestros 2 añitos juntos...</p>
+        <div class="button-container">
+            <button class="btn btn-yes" onclick="goToPage2()">¡Sí! 💕</button>
+            <button class="btn btn-no" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2: CARTA ESTILO SOBRE MEJORADO -->
+    <div class="page page-2" id="page2">
+        <div class="envelope-wrapper">
+            <div class="envelope-container">
+                <div class="envelope-base">
+                    <!-- Carta que sale -->
+                    <div class="letter-paper" id="letterPaper">
+                        <div class="letter-content">
+                            <div class="letter-header">
+                                <h2>Para Ti, Mi Princesita</h2>
+                                <p>Algunas palabras desde mi corazón</p>
+                            </div>
+                            <div class="letter-body">
+                                <p>
+                                    Han pasado 2 años desde que nuestras vidas se entrelazaron oficialmente como novios y fué de la manera más hermosa y perfecta. 
+                                    Dos años en los que hemos vivido momentos increíbles, de aventuras, de aprender a amarnos cada día más
+                                    aun sabiendo que los días no siempre son buenos, pero a pesar de todo y por la gracia de Dios, 
+                                    hemos llegado hasta este momento.
+                                </p>
+                                <p>
+                                    Cada momento a tu lado ha sido un regalo que Dios me ha dado, cada sonrisa tuya ilumina mi existir.
+                                    Amada mía, eres lo mejor que Dios me ha dado, tú me has hecho ser mejor persona y me has hecho ver 
+                                    la vida de una manera diferente.
+                                    ¡Gracias! por ser mi compañera, mi cómplice, mi mejor amiga y el amor de mi vida.
+                                    Sé que no siempre he sido el mejor novio, pero te prometo que haré lo posible por ser el mejor para ti.
+                                    Con la ayuda de Dios, yo te prometo siempre tratarte de lo mejor.
+                                </p>
+                                <p>
+                                    Gracias por cada abrazo, cada beso, por cada palabra de aliento, por estar en los buenos y malos momentos
+                                    por ser mi soporte, mi motivación, mi apoyo.
+                                    Dios te ha mandado a mi vida con un propósito, y yo te prometo que lo cumpliré contigo.
+                                </p>
+                                <p>
+                                    Estos 2 años son solo el comienzo de una historia que quiero escribir contigo por siempre.
+                                    Te amo más de lo que las palabras pueden expresar, y te prometo que siempre estaré contigo pase lo que pase.
+                                    Mi princesita, las palabras se quedan cortas para expresar lo que siento por ti.
+                                </p>
+
+                                <p>
+                                    Ahora te voy a contar un secreto, pero no te lo digas a nadie, ¿sabes que me gusta más de ti?
+                                    simplemente todo, para mí eres la más perfecta, te amo con tus virtudes y defectos, te amo tal cual eres
+                                    porque todo lo que tu eres te hace única.
+                                    Espero y confío en Dios que ya no sigamos cumpliendo más años de novios, sino que empecemos a cumplir años como
+                                    un matrimonio.
+                                </p>
+
+                                <p>
+                                    Mi prometida, quiero ser el mejor esposo para ti, tratarte siempre con respeto, amor y cariño.
+                                    Sé que hemos cometido tantos errores e incluso hemos ofendido a Dios, pero sé que Dios tiene misericordia de nuestras vidas
+                                    y la clave para que esto dure es poniendo a Dios en el centro de nuestra relación. 
+                                    Dejandole el control a Dios, nosotros solo tenemos que seguir su guía y seguir caminando juntos.
+                                </p>
+                                <p style="text-align: center; font-style: italic; color: #E91E63; font-family: 'Playfair Display', serif;">
+                                    **"¡La cuerda de tres hilos no se rompe fácilmente!"**
+                                    <br>
+                                    <span style="font-size: 0.8em; color: #191970;">— Eclesiastés 4:12 (PDT)</span>
+                                </p>
+                            </div>
+                            <p class="letter-signature">Con todo mi amor 💕</p>
+                            <button class="btn continue-btn" onclick="goToPage3()">Ver Nuestros Momentos ✨</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Corazón sellando el sobre -->
+                    <div class="envelope-heart">❤️</div>
+                    
+                    <!-- Solapa triangular -->
+                    <div class="envelope-flap" id="envelopeFlap" onclick="openEnvelope()">
+                        <span class="flap-text">
+                            <p>💕 Una celebración <br>
+                                nos une 💕
+                            </p></span>
+                    </div>
+                </div>
+            </div>
+            <p class="click-instruction" id="clickInstruction">👆 Haz clic para descubrirlo</p>
+        </div>
+    </div>
+
+    <!-- PÁGINA 3: TIMELINE -->
+    <div class="page-3" id="page3">
+        <div class="timeline-header">
+            <h1>🌟 Nuestra Historia de Amor 🌟</h1>
+            <p>Los momentos más especiales de nuestros 2 años juntos</p>
+        </div>
+        
+        <div class="timeline">
+            <!-- Momento 1: Primer Encuentro -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-date">El Principio</h3>
+                    <h4 class="timeline-title">💫 Nuestro Primer Encuentro</h4>
+                    <p class="timeline-description">
+                        El día que nuestros caminos se cruzaron por primera vez. Quien diría que esas galletitas cambiaría nuestras 
+                        vidas para siempre. Benditas gelletitas que usaste para darme cuenta que te gustaba. 🥰 
+                    </p>
+                    <div class="timeline-photo">
+                        <img src="imagenes/foto1.jpg" alt="Nuestro primer encuentro">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Momento 2: Primera Cita -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-date">Hace Más de 2 Años</h3>
+                    <h4 class="timeline-title">❤️ Nuestra Primera Cita</h4>
+                    <p class="timeline-description">
+                        Los nervios que se sentíamos que casi ni comimos, las risas, las miradas. Fué el comienzo de algo maravilloso 
+                        que sabíamos que era especial desde el primer momento. 
+
+                    </p>
+                    <div class="timeline-photo">
+                        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExczZ0Ynl3aXJxb2JxZjZicDlpNnZrZ3RuMnBlOTRiazEwNDgyazdxcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5N0ffSWJxsDJD5vdUU/giphy.gif" alt="Nuestra primera cita">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Momento 3: Hicimos Oficial -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-date">Noviembre 2023</h3>
+                    <h4 class="timeline-title">💑 Novios Oficialmente</h4>
+                    <p class="timeline-description">
+                        El día que decidimos caminar juntos en esta hermosa vida. Aunque usted no mucho quería 😭🤣
+                        (Sé que no son fotos del propio día pero puse las mas cercanas a la fecha)
+                    </p>
+                    <div class="timeline-photo">
+                        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExY296ZHE2ajVldWhuY3gydXZvN3lzOXE3cmNrODM4aXQ4MmJvNmx0MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JJiFmH8Z5u1h6fUQfw/giphy.gif" alt="Oficialmente novios">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Momento 4: Viaje Especial -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-date">Finales del año 2023</h3>
+                    <h4 class="timeline-title"> Muchas Aventuras y Recuerdos Vividos Juntos</h4>
+                    <p class="timeline-description">
+                        En esos primeros meses de novios creamos recuerdos increíbles, experiencias unicas, donde cada momento juntos 
+                        se sentía como un sueño hecho realidad. Fueron cosas que jamas olvidaré. 🥰
+                    </p>
+                    <div class="timeline-photo">
+                        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZzBoajdsMXI1czE5b3puN3duOGFsZ3h2a2g5b3JvMHR3YmJyZzhuZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vLWKfy8jRKdB6laheg/giphy.gif" alt="Recuerdos de nuestras aventuras">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Momento 5: Momento Reciente -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-date">Momento Reciente</h3>
+                    <h4 class="timeline-title">🎉 Celebrando Cada Día</h4>
+                    <p class="timeline-description">
+                        Seguimos creando momentos hermosos juntos. Cada día es una nueva oportunidad para amarnos más y construir nuestro futuro.
+                    </p>
+                    <div class="timeline-photo">
+                        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExamdiOHdhYWlqOXFnczk4aXN4eGd1dDBjMmlrZm04OXFndjl4cmRvaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yQiXbTC9s5yPPYzKLx/giphy.gif" alt="Celebrando cada día">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Momento 6: El Futuro -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 class="timeline-date">Por Siempre</h3>
+                    <h4 class="timeline-title">🌈 Nuestro Futuro Juntos</h4>
+                    <p class="timeline-description">
+                        Esto es solo el comienzo. Tenemos toda una vida por delante para seguir creando momentos inolvidables, 
+                        para seguir amándonos y creciendo juntos. Te amo hoy, mañana y siempre.
+                    </p>
+                    <div class="timeline-photo">
+                        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTZnYjUxcjJ0bnptcjhweHNzeDV5aDd4OWl3Y2FubHlrZ29hZGZqciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/W9RhHxmqqg769JPbH0/giphy.gif" alt="Nuestro futuro juntos">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN ESPECIAL DEL COMPROMISO - EN AZUL -->
+        <div class="special-place-section">
+            <div class="special-place">
+                <h2>💍 El Lugar Donde Todo Cambió 💍</h2>
+                <p class="special-place-text">
+                    <strong><a href="https://share.google/WduMVaWV3g1D0jyy3" target="_blank" class="location-link">El Boquerón</a></strong>
+                    <br><br>
+                    Este lugar quedará por siempre en nuestros corazones como el inicio de nuestro compromiso eterno.
+                    Cada rincón de ese lugar guarda la promesa de nuestro amor.
+                </p>
+                <div class="carousel-container">
+                    <div class="carousel-wrapper" id="carouselWrapper">
+                        <div class="carousel-item">
+                            <img class="product-image" src="imagenes/foto8.png" alt="La Pregunta">
+                            <span class="product-title">La Pregunta</span>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="product-image" src="imagenes/foto7.jpg" alt="El Lugar">
+                            <span class="product-title">El Lugar</span>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="product-image" src="imagenes/foto9.jpg" alt="El Anillo">
+                            <span class="product-title">¡Dijo que SÍ!</span>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="product-image" src="imagenes/foto10.jpg" alt="Juntos">
+                            <span class="product-title">Nueva Etapa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn final-btn" onclick="goToPage4()">✨ Continuar a la Celebración ✨</button>
+    </div>
+
+    <!-- PÁGINA 4: CELEBRACIÓN FINAL -->
+    <div class="page page-4" id="page4">
+        <div class="celebration-content">
+            <div class="celebration-emoji">🎉</div>
+            <h1>¡FELICES 2 AÑOS!</h1>
+            <div class="celebration-emoji">🎊</div>
+            <p class="celebration-text">
+                Gracias por estos 2 años increíbles de amor, risas y felicidad.
+                <br><br>
+                Eres mi persona favorita, mi mejor decisión, mi costillita.
+                <br><br>
+                Que vengan muchos años más a tu lado, mi amorcito y si es posible años de matrimonio.
+                <br><br>
+                <strong>TE AMO CADA DÍA MAS💕</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- Control de Música -->
+    <div class="music-control" id="musicBtn" onclick="toggleMusic()">
+        <span style="font-size: 24px;">🎵</span>
+    </div>
+
+    <!-- Audio -->
+    <audio id="bgMusic" loop preload="auto" autoplay>
+        <source src="Contigo.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script>
+        // Crear corazones flotantes
+        function createHearts() {
+            const container = document.getElementById('hearts-bg');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💕';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        // Mover botón NO
+        function moveButton() {
+            // Iniciar música si el usuario interactúa (incluso con el botón NO)
+            startMusic();
+            const btn = document.getElementById('noBtn');
+            const maxX = window.innerWidth - btn.offsetWidth - 20;
+            const maxY = window.innerHeight - btn.offsetHeight - 20;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            btn.style.position = 'fixed';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+
+        // Abrir sobre
+        let envelopeOpened = false;
+        function openEnvelope() {
+            // Iniciar música si aún no se ha iniciado
+            startMusic();
+            if (!envelopeOpened) {
+                // Abrir la solapa del sobre
+                document.getElementById('envelopeFlap').classList.add('open');
+                
+                // Ocultar las instrucciones primero
+                const instruction = document.getElementById('clickInstruction');
+                instruction.classList.add('hide');
+                
+                // Después de que se abra la solapa, mover la carta y ocultar el sobre
+                setTimeout(() => {
+                    const letterPaper = document.getElementById('letterPaper');
+                    
+                    // Mover la carta fuera del contenedor del sobre al body
+                    // Esto asegura que no se oculte cuando el sobre desaparezca
+                    document.body.appendChild(letterPaper);
+                    
+                    // Mostrar la carta con animación
+                    letterPaper.classList.add('show');
+                    
+                    // Ocultar el sobre completo con animación (después de mover la carta)
+                    setTimeout(() => {
+                        const envelopeContainer = document.querySelector('.envelope-container');
+                        if (envelopeContainer) {
+                            envelopeContainer.classList.add('hide');
+                        }
+                    }, 300);
+                }, 1000);
+                
+                envelopeOpened = true;
+            }
+        }
+
+        // Navegación entre páginas
+        function goToPage2() {
+            // Iniciar música automáticamente con el primer clic
+            startMusic();
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').style.display = 'flex';
+        }
+
+        function goToPage3() {
+            // Ocultar la carta si está visible con animación suave
+            const letterPaper = document.getElementById('letterPaper');
+            if (letterPaper && letterPaper.classList.contains('show')) {
+                // Remover la clase show y agregar transición de salida
+                letterPaper.classList.remove('show');
+                letterPaper.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                letterPaper.style.opacity = '0';
+                letterPaper.style.transform = 'translate(-50%, -50%) scale(0.9)';
+                letterPaper.style.pointerEvents = 'none';
+                
+                // Ocultar completamente después de la animación
+                setTimeout(() => {
+                    letterPaper.style.display = 'none';
+                    // Resetear estilos para futuras apariciones
+                    letterPaper.style.transition = '';
+                }, 500);
+            }
+            
+            // Cambiar a la página 3
+            document.getElementById('page2').classList.add('hidden');
+            document.getElementById('page3').style.display = 'block';
+            window.scrollTo(0, 0);
+            
+            // Iniciar el carrusel 3D cuando se muestra la página 3
+            initCarousel();
+        }
+
+        // ===== NUEVO: CONTROL DEL CARRUSEL 3D =====
+        let currentAngle = 0;
+        let carouselInterval = null;
+        const totalItems = 4;
+        const rotationAngle = 360 / totalItems; // 90 grados
+
+        function rotateCarousel() {
+            const wrapper = document.getElementById('carouselWrapper');
+            if (!wrapper) return; // Salir si el elemento no existe
+
+            currentAngle -= rotationAngle; // Gira en sentido horario
+            wrapper.style.transform = `rotateY(${currentAngle}deg)`;
+        }
+
+        function initCarousel() {
+            // Limpiar intervalo anterior si existe
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
+            }
+            
+            // Resetear el ángulo
+            currentAngle = 0;
+            const wrapper = document.getElementById('carouselWrapper');
+            if (wrapper) {
+                wrapper.style.transform = `rotateY(0deg)`;
+            }
+            
+            // Iniciar rotación automática (cada 4 segundos)
+            carouselInterval = setInterval(rotateCarousel, 4000);
+        }
+
+        function goToPage4() {
+            // Limpiar el intervalo del carrusel cuando se sale de la página 3
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
+                carouselInterval = null;
+            }
+            document.getElementById('page3').classList.add('hidden');
+            document.getElementById('page4').style.display = 'flex';
+            createConfetti();
+        }
+
+        // Crear confetti
+        function createConfetti() {
+            const container = document.getElementById('page4');
+            const colors = ['#87CEEB', '#D81B60', '#7CB69F', '#FFD700', '#FFF8F0'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(confetti);
+            }
+        }
+
+        // Control de música
+        let musicPlaying = false;
+        let musicStarted = false;
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+
+        function startMusic() {
+            if (!musicStarted) {
+                musicStarted = true;
+                music.play().then(() => {
+                    musicPlaying = true;
+                    musicBtn.classList.add('playing');
+                    musicBtn.innerHTML = '<span style="font-size: 24px;">🎶</span>';
+                }).catch(error => {
+                    console.log('Error al reproducir música:', error);
+                });
+            }
+        }
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                music.pause();
+                musicBtn.classList.remove('playing');
+                musicBtn.innerHTML = '<span style="font-size: 24px;">🎵</span>';
+            } else {
+                music.play();
+                musicBtn.classList.add('playing');
+                musicBtn.innerHTML = '<span style="font-size: 24px;">🎶</span>';
+            }
+            musicPlaying = !musicPlaying;
+        }
+
+        // Inicializar
+        window.onload = function() {
+            createHearts();
+            // Precargar la música
+            music.load();
+            
+            // Intentar reproducir música automáticamente (puede ser bloqueado por el navegador)
+            music.play().then(() => {
+                // Éxito: la música se reproduce automáticamente
+                musicPlaying = true;
+                musicStarted = true;
+                musicBtn.classList.add('playing');
+                musicBtn.innerHTML = '<span style="font-size: 24px;">🎶</span>';
+            }).catch(error => {
+                // El navegador bloqueó el autoplay - esto es normal
+                // La música se iniciará automáticamente con el primer clic del usuario
+                console.log('Música se iniciará con la primera interacción del usuario');
+            });
+        };
+    </script>
+</body>
+</html>
